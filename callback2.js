@@ -24,15 +24,58 @@ const boardingpass = (callback) => {
         console.log("boarding");
         callback();
     },
-        2000);
+        1000);
 };
-const securitycheck = (callback) => {
+const Securitycheck = (callback) => {
     setTimeout(() => {
         console.log("security");
         callback();
     },
+        2000);
+};
+const selfcheck = (callback) => {
+    setTimeout(() => {
+        console.log("self-checking done");
+        callback();
+    },
         3000);
 };
+const Navigationpanel = (callback) => {
+    setTimeout(() => {
+        console.log("navigation");
+        callback();
+    },
+        1000);
+};
+const Bus = (callback) => {
+    setTimeout(() => {
+        console.log("Bus");
+        callback();
+    },
+        2000);
+};
+const Airplane = (callback) => {
+    setTimeout(() => {
+        console.log("airplane");
+        callback();
+    },
+        3000);
+};
+const Fly = (callback) => {
+    setTimeout(() => {
+        console.log("Off to fly");
+        callback();
+    },
+        1000);
+};
+const Destination = (callback) => {
+    setTimeout(() => {
+        console.log("finally reached");
+        callback();
+    },
+        2000);
+};
+
 console.log("Journey...");
 
 user(() => {
@@ -40,7 +83,7 @@ user(() => {
     order(() => {
         console.log("tickets ordered");
         Airport(() => {
-            console.log("");
+            console.log("airport reached");
             boardingpass(() => {
                 Securitycheck(() => {
                     selfcheck(() => {

@@ -1,58 +1,91 @@
-const placeorder=(callback)=>
+const placeorder=()=>
 {
+    return new Promise((resolve, reject) => {
     setTimeout(()=>{
         console.log("order placed");
-        callback();
-    },
-    2000);
+        resolve();
+    },2000);
+});
 };
-const startproduction=(callback)=>
+const startproduction=()=>
 {
+    return new Promise((resolve, reject) => {
     setTimeout(()=>{
-        console.log("production started");
-        callback();
-    },
-    5000);
+        console.log("production");
+        resolve();
+    },1000);
+});
 };
-const printid=(callback)=>
+const printid=()=>
 {
+    return new Promise((resolve, reject) => {
     setTimeout(()=>{
         console.log("id printed");
-        callback();
-    },
-    2000);
+        resolve();
+    },2000);
+});
 };
-const productname=(callback)=>
+const productname=()=>
 {
+    return new Promise((resolve, reject) => {
     setTimeout(()=>{
-        console.log("product name");
-        callback();
-    },
-    2000);
+        console.log("name printed");
+        resolve();
+    },1000);
+});
 };
-const productdesc=(callback)=>
+const productdesc=()=>
 {
+    return new Promise((resolve, reject) => {
     setTimeout(()=>{
         console.log("description");
-        callback();
-    },
-    2000);
+        resolve();
+    },2000);
+});
 };
+
+// placeorder(()=>{
+//     console.log("In production");
+//     startproduction(()=>
+//     {
+//         console.log("printing items statrted");
+//         printid(()=>
+//         {
+//             productname(()=>
+//             {
+//                 productdesc(()=>
+//                 {
+//                  console.log("day ended");
+//                 })
+//             })
+//         })
+//     })
+// })
 console.log("ordering products...");
-placeorder(()=>{
-    console.log("In production");
-    startproduction(()=>
+placeorder()
+
+    .then(()=>
+    {
+        console.log("In production");
+        return startproduction()
+    })
+    .then(()=>
     {
         console.log("printing items statrted");
-        printid(()=>
-        {
-            productname(()=>
-            {
-                productdesc(()=>
-                {
-                 console.log("day ended");
-                })
-            })
-        })
+        return printid()
     })
-})
+    .then(()=>
+    {
+        console.log("naming started");
+        return productname()
+    })
+    .then(()=>
+    {
+        console.log("description");
+        return productdesc()
+    })
+    .catch(()=>
+    {
+      console.log("error");
+    });
+
